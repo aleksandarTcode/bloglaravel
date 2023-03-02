@@ -23,4 +23,6 @@ Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+
 
