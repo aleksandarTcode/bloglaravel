@@ -55,10 +55,10 @@ class Post extends Model implements Feedable
         return FeedItem::create([
             'id' => $this->id,
             'title' => $this->title,
-            'summary' => $this->slug,
+            'summary' => $this->excerpt,
             'updated' => $this->updated_at,
-            'link' => $this->excerpt,
-            'authorName' => $this->author,
+            'link' => url("/posts/{$this->slug}"),
+            'authorName' => $this->author->name,
         ]);
     }
 
