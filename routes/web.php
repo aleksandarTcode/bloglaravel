@@ -30,12 +30,8 @@ Route::middleware('can:admin')->group(function () {
    Route::resource('admin/posts',AdminPostController::class)->except('show');
 });
 
-
 // Rss Feed
 Route::feeds();
-
-
-
 
 
 
