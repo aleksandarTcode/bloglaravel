@@ -166,6 +166,9 @@ return [
          * Package Service Providers...
          */
 
+        Spatie\Feed\FeedServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
