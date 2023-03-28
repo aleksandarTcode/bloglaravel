@@ -8,6 +8,20 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
+// Newsletter testing
+//Route::get('ping', function() {
+//    $mailchimp = new \MailchimpMarketing\ApiClient();
+//
+//    $mailchimp->setConfig([
+//        'apiKey' => config('services.mailchimp.key'),
+//        'server' => 'us21'
+//
+//    ]);
+//
+//    $response = $mailchimp->ping->get();
+//    ddd($response);
+//});
+
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 
