@@ -4,8 +4,10 @@ use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostStatusController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 // Newsletter testing
@@ -41,6 +43,7 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 // Admin
 Route::middleware('can:admin')->group(function () {
    Route::resource('admin/posts',AdminPostController::class)->except('show');
+   Route::patch('admin/posts/status/{post}',[AdminPostController::class, 'updateStatus']);
 });
 
 // Rss Feed

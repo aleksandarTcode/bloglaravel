@@ -27,7 +27,16 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="text-xs text-gray-400">Delete</button>
+                                            <button class="text-xs text-red-400">Delete</button>
+                                        </form>
+                                    </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <form method="POST" action="/admin/posts/status/{{ $post->id }}">
+                                            @csrf
+                                            @method('PATCH')
+
+                                            <button class="text-xs text-gray-400">Change Status from <strong>{{ $post->status }}</strong></button>
                                         </form>
                                     </td>
                                 </tr>

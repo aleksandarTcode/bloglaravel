@@ -12,12 +12,17 @@ class PostController extends Controller
     {
 
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString()
+            'posts' => Post::latest()->where('status','published')->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString()
         ]);
     }
 
     public function show(Post $post)
     {
+
+        if ($post->status == 'draft') {
+            abort(404);
+        }
+
         return view('posts.show', [
             'post' => $post
         ]);

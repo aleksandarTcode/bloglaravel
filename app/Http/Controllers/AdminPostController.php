@@ -57,6 +57,18 @@ class AdminPostController extends Controller
         return back()->with('success', 'Post deleted!');
     }
 
+    public function updateStatus(Post $post)
+    {
+        $currentStatus = $post->status;
+
+        $post->status = ($currentStatus == 'draft') ? 'published' : 'draft';
+
+        $post->save();
+
+        return back()->with('success', 'Post status updated!');
+
+    }
+
 
     protected function validatePost(?Post $post = null): array
     {
