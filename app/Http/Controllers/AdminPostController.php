@@ -11,7 +11,7 @@ class AdminPostController extends Controller
     public function index()
     {
         return view('admin.posts.index',[
-            'posts'=>Post::paginate(50)
+            'posts'=>Post::latest()->paginate(8)
         ]);
     }
 
@@ -47,6 +47,7 @@ class AdminPostController extends Controller
 
         $post->update($attributes);
 
+
         return back()->with('success', 'Post updated!');
     }
 
@@ -79,7 +80,8 @@ class AdminPostController extends Controller
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
             'excerpt' => 'required',
             'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'user_id' => ['required', Rule::exists('users', 'id')],
         ]);
     }
 

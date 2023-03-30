@@ -18,7 +18,7 @@
             <x-form.textarea name="body">{{ old('body', $post->body) }}</x-form.textarea>
 
             <x-form.field>
-                <x-form.label name="category_id" />
+                <x-form.label name="category" />
 
                 <select name="category_id" id="category_id">
                     @foreach (\App\Models\Category::all() as $category)
@@ -32,6 +32,23 @@
                 </select>
 
                 <x-form.error name="category" />
+            </x-form.field>
+
+            <x-form.field>
+                <x-form.label name="author" />
+
+                <select name="user_id" id="user_id">
+                    @foreach (\App\Models\User::all() as $user)
+                        <option
+                            value="{{ $user->id }}"
+                            {{ old('user_id', $post->user_id) == $user->id ? 'selected' : '' }}
+                        >
+                            {{ ucwords($user->name) }}
+                        </option>
+                    @endforeach
+                </select>
+
+                <x-form.error name="author" />
             </x-form.field>
 
             <x-form.button>Update</x-form.button>
