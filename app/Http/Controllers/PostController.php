@@ -23,9 +23,9 @@ class PostController extends Controller
             abort(404);
         }
 
-        return view('posts.show', [
-            'post' => $post
-        ]);
+        $post->increment('views');
+
+        return view('posts.show', compact('post'));
     }
 
 }
