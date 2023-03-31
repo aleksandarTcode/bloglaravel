@@ -39,6 +39,15 @@
                                             <button class="text-xs text-gray-400">Change Status from <strong>{{ $post->status }}</strong></button>
                                         </form>
                                     </td>
+
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="text-sm font-medium text-gray-900">
+                                                <p>{{ $post->views }} views</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
                                 </tr>
                             @endforeach
                             </tbody>
