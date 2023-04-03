@@ -80,8 +80,7 @@ class AdminPostController extends Controller
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
             'excerpt' => 'required',
             'body' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')],
-            'user_id' => ['required', Rule::exists('users', 'id')],
+            'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
     }
 
