@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\PostStatusController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Models\Post;
@@ -45,6 +45,8 @@ Route::middleware('can:admin')->group(function () {
    Route::resource('admin/posts',AdminPostController::class)->except('show');
    Route::patch('admin/posts/status/{post}',[AdminPostController::class, 'updateStatus']);
 });
+
+Route::post('author/{post}/follow',[FollowController::class,'store'])->middleware('auth');
 
 // Rss Feed
 Route::feeds();

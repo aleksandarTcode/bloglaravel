@@ -15,6 +15,20 @@
                             <h5 class="font-bold">
                                 <a href="/?author={{ $post->author->username }}">{{ $post->author->name }}</a>
                             </h5>
+
+                            @if(auth()->user()->id !== $post->author->id)
+
+                            @auth
+                            <form action="/author/{{ $post->author->id }}/follow" method="POST">
+                                @csrf
+                                <button type="submit" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 mt-2 rounded">
+                                        Follow
+                                </button>
+                            </form>
+                                @endauth
+
+                            @endif
+
                         </div>
                     </div>
                 </div>
