@@ -14,7 +14,7 @@ class FollowsController extends Controller
 //        dd($post);
         auth()->user()->following()->attach($post->author->id);
 
-        return back();
+        return back()->with('success', 'You started following '.$post->author->name);
 
     }
 
@@ -30,7 +30,7 @@ class FollowsController extends Controller
         }
 
         // Redirect back to the previous page
-        return back();
+        return back()->with('success', 'You stopped following '.$post->author->name);
 
     }
 }
