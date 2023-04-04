@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
-use App\Http\Controllers\FollowController;
+use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
@@ -46,8 +46,8 @@ Route::middleware('can:admin')->group(function () {
    Route::patch('admin/posts/status/{post}',[AdminPostController::class, 'updateStatus']);
 });
 
-Route::post('author/{post:user_id}/follow',[FollowController::class,'store'])->middleware('auth');
-Route::delete('author/{post:user_id}/unfollow',[FollowController::class,'destroy'])->middleware('auth');
+Route::post('author/{post:user_id}/follow',[FollowsController::class,'store'])->middleware('auth');
+Route::delete('author/{post:user_id}/unfollow',[FollowsController::class,'destroy'])->middleware('auth');
 
 // Rss Feed
 Route::feeds();

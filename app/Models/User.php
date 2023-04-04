@@ -55,13 +55,13 @@ class User extends Authenticatable
 
     public function followed_by()
     {
-        return $this->belongsToMany(User::class, 'followers', 'author_id', 'follower_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'follows', 'author_id', 'follower_id')->withTimestamps();
     }
 
 
     public function following()
     {
-        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'author_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'author_id')->withTimestamps();
     }
 
 }

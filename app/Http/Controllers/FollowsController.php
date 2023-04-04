@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Follower;
+use App\Models\Follow;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class FollowController extends Controller
+class FollowsController extends Controller
 {
     public function store(Post $post)
     {
@@ -20,9 +20,8 @@ class FollowController extends Controller
 
     public function destroy(Post $post){
 
-
-        $record = Follower::where('follower_id', auth()->user())
-            ->where('author_id', $post->author)
+        $record = Follow::where('follower_id', auth()->user()->id)
+            ->where('author_id', $post->author->id)
             ->first();
 
         // Delete the record if it exists
