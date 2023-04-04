@@ -46,7 +46,8 @@ Route::middleware('can:admin')->group(function () {
    Route::patch('admin/posts/status/{post}',[AdminPostController::class, 'updateStatus']);
 });
 
-Route::post('author/{post}/follow',[FollowController::class,'store'])->middleware('auth');
+Route::post('author/{post:user_id}/follow',[FollowController::class,'store'])->middleware('auth');
+Route::delete('author/{post:user_id}/unfollow',[FollowController::class,'destroy'])->middleware('auth');
 
 // Rss Feed
 Route::feeds();
