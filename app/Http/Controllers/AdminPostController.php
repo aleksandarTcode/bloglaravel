@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FollowAuthorMail;
 use App\Models\Follow;
 use App\Models\Post;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class AdminPostController extends Controller
@@ -67,15 +70,20 @@ class AdminPostController extends Controller
 
         $post->save();
 
-//        if($post->status == 'published')
-//        {
-//            $SendEmailsTo = Follow::join('users', 'users.id', '=', 'follows.follower_id')
-//                ->where('follows.author_id', '=', $post->author->id)
-//                ->select('users.email')
-//                ->get();
-//
-//            dd($SendEmailsTo->pluck('email'));
-//        }
+        if($post->status == 'published')
+        {
+            $SendEmailsTo = Follow::join('users', 'users.id', '=', 'follows.follower_id')
+                ->where('follows.author_id', '=', $post->author->id)
+                ->select('users.email')
+                ->get()->pluck('email')->toArray();
+
+            foreach($SendEmailsTo as $email){
+                Mail::to($email)->send(new FollowAuthorMail());
+                return back()->with('success', 'Post status updated and emails sent to followers!');
+            }
+
+
+        }
 
         return back()->with('success', 'Post status updated!');
 
