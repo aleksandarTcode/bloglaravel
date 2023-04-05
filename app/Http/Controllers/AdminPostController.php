@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Follow;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -65,6 +66,16 @@ class AdminPostController extends Controller
         $post->status = ($currentStatus == 'draft') ? 'published' : 'draft';
 
         $post->save();
+
+//        if($post->status == 'published')
+//        {
+//            $SendEmailsTo = Follow::join('users', 'users.id', '=', 'follows.follower_id')
+//                ->where('follows.author_id', '=', $post->author->id)
+//                ->select('users.email')
+//                ->get();
+//
+//            dd($SendEmailsTo->pluck('email'));
+//        }
 
         return back()->with('success', 'Post status updated!');
 

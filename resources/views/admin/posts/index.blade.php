@@ -12,7 +12,7 @@
                                         <div class="flex items-center">
                                             <div class="text-sm font-medium text-gray-900">
                                                 <a href="/posts/{{ $post->slug }}">
-                                                    {{ $post->title }}
+                                                    {{ $post->title }} <i>by {{ $post->author->name }}</i>
                                                 </a>
                                             </div>
                                         </div>
