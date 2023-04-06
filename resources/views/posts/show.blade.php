@@ -15,6 +15,10 @@
                             <h5 class="font-bold">
                                 <a href="/?author={{ $post->author->username }}">{{ $post->author->name }}</a>
                             </h5>
+
+
+                            <x-follow-button :post="$post"/>
+
                         </div>
                     </div>
                 </div>
