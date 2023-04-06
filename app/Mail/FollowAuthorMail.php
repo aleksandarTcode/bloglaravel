@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +18,12 @@ class FollowAuthorMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $post;
+
+    public function __construct(Post $post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
