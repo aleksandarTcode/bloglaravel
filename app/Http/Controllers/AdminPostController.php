@@ -86,7 +86,7 @@ class AdminPostController extends Controller
             }
         }catch (\Exception $e)
         {
-            return back()->with('success', 'Post status updated, emails weren\'t sent because '.$e->getMessage().'!');
+            return back()->with('success', 'Post status updated, emails weren\'t sent because '.$e->getMessage());
         }
 
         return back()->with('success', 'Post status updated!');
