@@ -50,6 +50,11 @@ class Post extends Model implements Feedable
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function bookmark()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create([
