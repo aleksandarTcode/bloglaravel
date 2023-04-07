@@ -1,4 +1,4 @@
-@props(['post'])
+@props(['post','bookmarks'])
 
 <article
     class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
@@ -9,9 +9,11 @@
 
         <div class="flex-1 flex flex-col justify-between">
             <header class="mt-8 lg:mt-0">
-                <div class="space-x-2">
+                <div class="flex items-center justify-between space-x-2">
                     <x-category-button :category="$post->category" />
+                    <x-bookmark-button :post="$post" :bookmarks="$bookmarks"/>
                 </div>
+
 
                 <div class="mt-4">
                     <h1 class="text-3xl">

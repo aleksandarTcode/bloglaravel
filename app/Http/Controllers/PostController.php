@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bookmark;
 use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
@@ -12,7 +13,8 @@ class PostController extends Controller
     {
 
         return view('posts.index', [
-            'posts' => Post::latest()->where('status','published')->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString()
+            'posts' => Post::latest()->where('status','published')->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString(),
+            'bookmarks' => Bookmark::all()
         ]);
     }
 
@@ -25,7 +27,8 @@ class PostController extends Controller
 
         $post->increment('views');
 
-        return view('posts.show', compact('post'));
+        $bookmarks = Bookmark::all();
+        return view('posts.show', compact('post','bookmarks'));
     }
 
 }

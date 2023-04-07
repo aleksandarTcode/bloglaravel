@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FollowsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
@@ -48,6 +49,9 @@ Route::middleware('can:admin')->group(function () {
 
 Route::post('author/{post:user_id}/follow',[FollowsController::class,'store'])->middleware('auth');
 Route::delete('author/{post:user_id}/unfollow',[FollowsController::class,'destroy'])->middleware('auth');
+
+Route::post('bookmark/{post}',[BookmarkController::class,'store'])->middleware('auth');
+Route::delete('bookmark/{post}',[BookmarkController::class,'destroy'])->middleware('auth');
 
 // Rss Feed
 Route::feeds();

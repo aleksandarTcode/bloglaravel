@@ -49,9 +49,12 @@
                         </div>
                     </div>
 
-                    <h1 class="font-bold text-3xl lg:text-4xl mb-10">
-                        {{ $post->title }}
-                    </h1>
+                    <div class="flex items-center justify-between space-x-2 mb-10">
+                        <h1 class="font-bold text-3xl lg:text-4xl">
+                            {{ $post->title }}
+                        </h1>
+                        <x-bookmark-button :post="$post" :bookmarks="$bookmarks"/>
+                    </div>
 
                     <div class="space-y-4 lg:text-lg leading-loose">{!! $post->body !!}</div>
                 </div>
