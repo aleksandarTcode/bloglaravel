@@ -53,6 +53,8 @@ Route::delete('author/{post:user_id}/unfollow',[FollowsController::class,'destro
 Route::post('bookmark/{post}',[BookmarkController::class,'store'])->middleware('auth');
 Route::delete('bookmark/{post}',[BookmarkController::class,'destroy'])->middleware('auth');
 
+Route::get('bookmarks',[BookmarkController::class,'index'])->middleware('auth');
+
 // Rss Feed
 Route::feeds();
 

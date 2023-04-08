@@ -6,6 +6,7 @@
     </h1>
 
     <div class="flex flex-shrink-0">
+        @if(request()->is('admin/*'))
         <aside class="w-48 mr-3">
             <h4 class="font-semibold mb-4">Links</h4>
             <ul>
@@ -18,6 +19,7 @@
                 </li>
             </ul>
         </aside>
+        @endif
 
         <main class="flex-1">
             <x-panel>

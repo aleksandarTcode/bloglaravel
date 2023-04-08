@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
+    public function index()
+    {
+        return view('bookmarks.index', [
+            'bookmarks_for_user' => Bookmark::latest()->where('user_id', auth()->id())->get(),
+            'bookmarks' => Bookmark::all(),
+        ]);
+
+    }
     public function store(Post $post)
     {
 
