@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FollowsController;
@@ -54,6 +55,10 @@ Route::post('bookmark/{post}',[BookmarkController::class,'store'])->middleware('
 Route::delete('bookmark/{post}',[BookmarkController::class,'destroy'])->middleware('auth');
 
 Route::get('bookmarks',[BookmarkController::class,'index'])->middleware('auth');
+
+Route::get('account/{user}/edit',[AccountController::class,'edit'])->middleware(['auth', 'checkUserId'])->name('account.edit');
+Route::patch('account/{user}',[AccountController::class,'update'])->middleware(['auth', 'checkUserId'])->name('account.edit');
+
 
 // Rss Feed
 Route::feeds();
