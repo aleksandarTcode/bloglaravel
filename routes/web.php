@@ -57,7 +57,7 @@ Route::delete('bookmark/{post}',[BookmarkController::class,'destroy'])->middlewa
 Route::get('bookmarks',[BookmarkController::class,'index'])->middleware('auth');
 
 Route::get('account/{user}/edit',[AccountController::class,'edit'])->middleware(['auth', 'checkUserId'])->name('account.edit');
-Route::patch('account/{user}',[AccountController::class,'update'])->middleware(['auth', 'checkUserId'])->name('account.edit');
+Route::patch('account/{user}',[AccountController::class,'update'])->middleware(['auth', 'checkUserId']);
 
 
 // Rss Feed
