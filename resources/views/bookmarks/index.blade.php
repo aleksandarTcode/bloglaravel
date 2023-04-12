@@ -36,7 +36,11 @@
                         </table>
                     </div>
 
+                    <div class="mt-5">{{ $bookmarks_for_user->links() }}</div>
                 </div>
+
+
+
             </div>
         </div>
     </x-setting>

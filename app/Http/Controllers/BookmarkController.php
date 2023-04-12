@@ -12,7 +12,7 @@ class BookmarkController extends Controller
     public function index()
     {
         return view('bookmarks.index', [
-            'bookmarks_for_user' => Bookmark::latest()->where('user_id', auth()->id())->get(),
+            'bookmarks_for_user' => Bookmark::latest()->where('user_id', auth()->id())->paginate(8),
             'bookmarks' => Bookmark::all(),
         ]);
 
