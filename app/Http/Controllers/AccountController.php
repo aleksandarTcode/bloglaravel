@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
 {
@@ -18,7 +19,7 @@ class AccountController extends Controller
 
 
         $attributes = request()->validate([
-            'username' => 'required',
+            'username' => ['required', Rule::unique('users', 'username')->ignore($user->id)],
             'avatar' => $user->exists ? ['image'] : ['required', 'image'],
         ]);
 

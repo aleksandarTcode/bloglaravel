@@ -6,6 +6,8 @@
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <tbody class="bg-white divide-y divide-gray-200">
+
+                            @if($bookmarks_for_user->count())
                             @foreach ($bookmarks_for_user as $bookmark)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -21,12 +23,15 @@
 
                                         </div>
 
-
-
                                     </td>
 
                                 </tr>
                             @endforeach
+                                @else
+                                    <p class="text-center">No bookmarks yet. </p>
+
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
