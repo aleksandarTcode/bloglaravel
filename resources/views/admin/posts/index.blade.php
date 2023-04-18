@@ -11,7 +11,7 @@
                 </div>
                 <input
                     type="text"
-                    name="find"
+                    name="query"
                     class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
                     placeholder="Find Post..."
                 />
@@ -27,8 +27,6 @@
         </form>
 
         <div id="search-results"></div>
-
-
 
 
         <div class="flex flex-col">
