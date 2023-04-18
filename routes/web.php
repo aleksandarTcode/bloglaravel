@@ -46,6 +46,7 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 Route::middleware('can:admin')->group(function () {
    Route::resource('admin/posts',AdminPostController::class)->except('show');
    Route::patch('admin/posts/status/{post}',[AdminPostController::class, 'updateStatus']);
+   Route::get('admin/posts/search',[AdminPostController::class, 'search']);
 });
 
 Route::post('author/{post:user_id}/follow',[FollowsController::class,'store'])->middleware('auth');

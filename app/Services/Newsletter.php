@@ -16,6 +16,7 @@ class Newsletter
         ]);
     }
 
+
     protected function client()
     {
         return (new ApiClient())->setConfig([

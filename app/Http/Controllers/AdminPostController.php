@@ -93,6 +93,17 @@ class AdminPostController extends Controller
 
     }
 
+    public function search()
+    {
+        $query = request('find');
+        $posts = Post::where('title', 'LIKE', '%' . $query . '%')->orwhere('body', 'LIKE', '%' . $query . '%')->orWhereHas('author', function($q) use($query) {
+            $q->where('name', 'LIKE', '%' . $query . '%');
+        })->paginate(10);
+
+
+        return view('admin.posts.index', compact('posts'));
+    }
+
 
     protected function validatePost(?Post $post = null): array
     {
