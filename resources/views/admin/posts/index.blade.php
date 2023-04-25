@@ -14,6 +14,7 @@
                     name="query"
                     class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
                     placeholder="Find Post..."
+                    value="{{ request('query') }}"
                 />
                 <div class="absolute top-2 right-2">
                     <button

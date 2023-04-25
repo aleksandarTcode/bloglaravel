@@ -98,7 +98,7 @@ class AdminPostController extends Controller
         $query = request('query');
         $posts = Post::where('title', 'LIKE', '%' . $query . '%')->orwhere('body', 'LIKE', '%' . $query . '%')->orWhereHas('author', function($q) use($query) {
             $q->where('name', 'LIKE', '%' . $query . '%');
-        })->paginate(10);
+        })->latest()->paginate(10);
 
 
         return view('admin.posts.index', compact('posts'));
