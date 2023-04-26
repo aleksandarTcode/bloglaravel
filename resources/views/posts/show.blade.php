@@ -40,9 +40,11 @@
                             Back to Posts
                         </a>
 
+                        @can('admin')
                         <div class="space-x-2">
                             <p class="px-3 py-1 border border-blue-500 rounded-full text-blue-500 text-xs uppercase font-semibold">Views {{ $post->views }}</p>
                         </div>
+                        @endcan
 
                         <div class="space-x-2">
                             <x-category-button :category="$post->category" />
