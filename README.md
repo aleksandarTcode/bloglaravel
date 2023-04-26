@@ -46,6 +46,8 @@ composer install
 
 Copy the .env.example file to .env and update the necessary configuration options
 
+Mailgun API is used to send email and Mailchimp API for sending newsletter to subscribed users
+
 For MySQL, create database and insert your credentials in .env file:
 ```
 DB_CONNECTION=mysql
