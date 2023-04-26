@@ -23,7 +23,7 @@ Admin users (only usernames 'aleksandar' and 'jane' can be admins) can do everyt
 * See post view counter for individual posts
 * Create new posts and go to the admin dashboard
 * In the admin dashboard, create new posts or see the list of all posts with a search option
-* Change the post status from draft to publish to make it visible on the main page
+* Change the post status from draft to publish to make it visible on the main page with sending email to all writer followers to inform them about new post
 * Edit or delete posts
 * See the post view counter on the posts list
 
