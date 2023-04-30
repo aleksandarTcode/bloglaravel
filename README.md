@@ -16,7 +16,7 @@ Logged-in users can do everything non-logged-in users can do, plus the following
 * Update their own account (change username or profile picture)
 * Go to bookmarks page with a list and links to all bookmarked posts and unbookmark individual bookmarks
 
-## Admin users
+## Admin users 
 
 Admin users (only usernames 'aleksandar' and 'jane' can be admins) can do everything logged-in users can do, plus the following:
 
