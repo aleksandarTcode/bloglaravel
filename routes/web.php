@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 // Newsletter testing
 //Route::get('ping', function() {
@@ -59,6 +60,16 @@ Route::get('bookmarks',[BookmarkController::class,'index'])->middleware('auth');
 
 Route::get('account/{user}/edit',[AccountController::class,'edit'])->middleware(['auth', 'checkUserId'])->name('account.edit');
 Route::patch('account/{user}',[AccountController::class,'update'])->middleware(['auth', 'checkUserId']);
+
+// GitHub Routes
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+
+Route::get('/auth/callback', function () {
+    $user = Socialite::driver('github')->user();
+    dd($user);
+});
 
 
 // Rss Feed
