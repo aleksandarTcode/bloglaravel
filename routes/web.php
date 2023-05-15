@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\FollowsController;
+use App\Http\Controllers\GitHubLoginController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
@@ -62,14 +63,9 @@ Route::get('account/{user}/edit',[AccountController::class,'edit'])->middleware(
 Route::patch('account/{user}',[AccountController::class,'update'])->middleware(['auth', 'checkUserId']);
 
 // GitHub Routes
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
+Route::get('/auth/redirect', [GitHubLoginController::class,'redirectToProvider']);
 
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('github')->user();
-    dd($user);
-});
+Route::get('/auth/callback', [GitHubLoginController::class,'handleProviderCallback']);
 
 
 // Rss Feed

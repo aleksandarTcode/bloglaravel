@@ -10,7 +10,12 @@
             <div>
                 <x-form.input name="avatar" type="file" :value="old('avatar', $user->avatar)" />
 
-                <img src="{{ asset('storage/'. $user->avatar) }}" width="100px" alt="User avatar" class="rounded-xl mt-4">
+                @if (strpos($user->avatar, 'http') === 0)
+                    <img src="{{ $user->avatar }}" width="100px" alt="User avatar" class="rounded-xl mt-4">
+                @else
+                    <img src="{{ asset('storage/'. $user->avatar) }}" width="100px" alt="User avatar" class="rounded-xl mt-4">
+                @endif
+
             </div>
 
 
