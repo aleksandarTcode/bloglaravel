@@ -1,6 +1,6 @@
 # Blog Laravel 8 app
 
-This is an example of Laravel 8 blog app. It has three types of users: non-logged-in users, logged-in users, and admin users.
+This is an example of Laravel 8 blog app. It has three types of users: non-logged-in users, logged-in users, and admin users. User can register its own account and log in with it, or use GitHub OAuth to authenticate.
 
 ## Non-logged-in users
 
@@ -46,7 +46,9 @@ composer install
 
 Copy the .env.example file to .env and update the necessary configuration options
 
-Mailgun API is used to send email and Mailchimp API for sending newsletter to subscribed users
+Set VirtualHost to bloglaravel.test for GitHub login to work properly
+
+Mailgun API is used to send emails and Mailchimp API for sending newsletters to subscribed users
 
 For MySQL, create database and insert your credentials in .env file:
 ```
