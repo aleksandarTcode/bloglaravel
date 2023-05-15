@@ -10,7 +10,9 @@
                     </p>
 
                     <div class="flex items-center lg:justify-center text-sm mt-4">
-                        <img src="{{ asset('storage/'. $post->author->avatar) }}" width="50px" alt="User avatar">
+
+                        <x-user-avatar :src="$post->author->avatar" width="50px" />
+
                         <div class="ml-3 text-left">
                             <h5 class="font-bold">
                                 <a href="/?author={{ $post->author->username }}">{{ $post->author->name }}</a>

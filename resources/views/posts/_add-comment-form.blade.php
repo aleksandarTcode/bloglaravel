@@ -4,11 +4,8 @@
             @csrf
 
             <header class="flex items-center">
-                <img src={{ asset('storage/'. $user->avatar) }}
-                     alt=""
-                     width="40"
-                     height="60"
-                     class="rounded-full">
+
+                <x-user-avatar :src="$user->avatar" width="50px" />
 
                 <h2 class="ml-4">Want to participate?</h2>
             </header>
