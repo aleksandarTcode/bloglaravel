@@ -14,7 +14,7 @@ class PostController extends Controller
     {
 
         return view('posts.index', [
-            'posts' => Post::latest()->where('status','published')->filter(request(['search', 'category', 'author']))->paginate(6)->withQueryString(),
+            'posts' => Post::latest()->where('status','published')->filter(request(['search', 'category', 'author', 'tag']))->paginate(6)->withQueryString(),
             'bookmarks' => Bookmark::all()
         ]);
     }

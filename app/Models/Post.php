@@ -33,6 +33,12 @@ class Post extends Model implements Feedable
                 $query->where('username', $author)
             )
         );
+
+        $query->when($filters['tag'] ?? false, fn($query, $tags) =>
+            $query->where('tags', 'like', '%'. request('tag'). '%')
+        );
+
+
     }
 
     public function comments()

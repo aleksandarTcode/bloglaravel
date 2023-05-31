@@ -14,6 +14,8 @@
             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="" class="rounded-xl mt-4" width="100">
             </div>
 
+            <x-form.input name="tags" :value="old('tags', $post->tags)" placeholder="Comma Separated (e.g.,Laravel, PHP, MySQL, etc)" />
+
             <x-form.textarea name="excerpt">{{ old('excerpt', $post->excerpt) }}</x-form.textarea>
             <x-form.textarea name="body">{{ old('body', $post->body) }}</x-form.textarea>
 

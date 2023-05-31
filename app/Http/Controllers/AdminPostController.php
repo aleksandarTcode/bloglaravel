@@ -112,6 +112,7 @@ class AdminPostController extends Controller
             'title' => 'required',
             'thumbnail' => $post->exists ? ['image'] : ['required', 'image'],
             'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+            'tags' => ['required', 'regex:/^[\w\s]+(,[\w\s]+)*$/'], // Validates comma-separated words
             'excerpt' => 'required',
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
